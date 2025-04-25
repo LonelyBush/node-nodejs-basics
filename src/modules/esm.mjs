@@ -1,4 +1,5 @@
-import path from 'path';
+import {dirname, sep,} from 'path';
+import { fileURLToPath } from 'url';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import './files/c.cjs';
@@ -15,12 +16,16 @@ if (random > 0.5) {
     unknownObject = object3
 }
 
+const path = fileURLToPath(import.meta.url)
+const __dirname = dirname(path);
+const __filename =  path.split('\\')[path.split('\\').length-1];
+
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
-console.log(`Path segment separator is "${path.sep}"`);
+console.log(`Path segment separator is "${sep}"`);
 
-console.log(`Path to current file is ${path.__filename}`);
-console.log(`Path to current directory is ${path.__dirname}`);
+console.log(`Path to current file is ${__filename}`);
+console.log(`Path to current directory is ${__dirname}`);
 
 const myServer = createServerHttp((_, res) => {
     res.end('Request accepted');
