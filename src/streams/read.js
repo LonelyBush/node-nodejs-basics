@@ -1,4 +1,4 @@
-import {createReadStream} from 'fs';
+import {createReadStream,} from 'fs';
 
 const read = async () => {
    const read = createReadStream('src/streams/files/fileToRead.txt',  {
